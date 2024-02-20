@@ -22,10 +22,8 @@ selectSize.addEventListener('change', (e) => {
 });
 
 dpiSelect.addEventListener('change', (e) => {
-    console.log(e)
-    // dpi = dpiSelect.value;
-    // let title = dpiSelect.title;
-    // console.log(dpiSelect.value)
+    let i = dpiSelect.selectedIndex
+    console.log(dpiSelect[i].title)
 });
 
 
