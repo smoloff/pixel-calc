@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select name="standart_sizes" id="standart_sizes">
+        <option>Власний розмір</option>
+        <option value="148x210">А5</option>
+        <option value="210x297">А4</option>
+        <option value="297x420">А3</option>
+        <option value="420x594">А2</option>
+        <option value="594x841">А1</option>
+        <option value="841x1189">А0</option>
+        <option value="500x707">B2</option>
+        <option value="707x1000">B1</option>
+    </select>
+
+    <select name="dpi_values" id="dpi_values">
+        <option value="300" title="високоякісний друк до А1 формату">300</option>
+        <option value="200" title="високоякісний друк від А1 формату">200</option>
+        <option value="150" title="високоякісний друк від А0 формату">150</option>
+        <option value="96" title="перегляду на екрані монітору">96</option>
+        <option value="72" title="перегляд на екрані смартфону">72</option>
+    </select>
+
+    <input type="number" min="1" max="3200" step="1" id="input_width">
+    <span id="rotate" title="змінити орієнтацію із альбомної на портрету та навпаки">&#8644</span>
+    <input type="number" min="1" max="3200" step="1" id="input_height">
+    <button id="btn_convert">Конвертувати</button>
+    <span id="result">0</span>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
