@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 
-<body> 
+<body>
     <section style="display: flex; flex-direction: column; flex-gap:20px"></section>
     <div>
         <select name="standart_sizes" id="standart_sizes">
@@ -23,22 +23,30 @@
         </select>
 
         <select name="dpi_values" id="dpi_values">
-            <option value="450" title="високоякісний друк до А4 формату">450</option>
-            <option value="300" title="високоякісний друк до А1 формату">300</option>
-            <option value="200" title="високоякісний друк від А1 формату">200</option>
-            <option value="150" title="високоякісний друк від А0 формату">150</option>
-            <option value="96" title="перегляду на екрані монітору">96</option>
-            <option value="72" title="перегляд на екрані смартфону">72</option>
+            <option value="450" title="високоякісний друк до А4 формату">450 dpi</option>
+            <option value="300" title="високоякісний друк до А1 формату">300 dpi</option>
+            <option value="200" title="високоякісний друк від А1 формату">200 dpi</option>
+            <option value="150" title="високоякісний друк від А0 формату">150 dpi</option>
+            <option value="96" title="перегляду на екрані монітору">96 dpi</option>
+            <option value="72" title="перегляд на екрані смартфону">72 dpi</option>
         </select>
     </div>
 
-    <div>
-        <input type="number" min="1" max="3200" step="1" id="input_width">
-        <span id="rotate" title="змінити орієнтацію із альбомної на портрету та навпаки">&#8644</span>
-        <input type="number" min="1" max="3200" step="1" id="input_height">
+    <div style="display: flex;">
+        <div style=" display: flex; flex-direction: column;">
+        <label for="width">Ширина мм</label>
+        <input type="number" name="width" min="1" max="3200" step="1" id="input_width">
+    </div>
+    <span id="rotate" title="змінити орієнтацію із альбомної на портрету та навпаки">&#8644</span>
+    <div style="display: flex; flex-direction: column;">
+
+        <label for="width">Довжина мм</label>
+        <input type="number" name="lenght" min="1" max="3200" step="1" id="input_height">
+    </div>
+
     </div>
     <div>
-        <button id="btn_convert">Конвертувати</button>
+        <!-- <button id="btn_convert">Конвертувати</button> -->
         <span id="result"></span>
     </div>
 

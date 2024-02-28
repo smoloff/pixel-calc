@@ -9,19 +9,25 @@ let dpi = 300;
 let result = {};
 
 const convertFunc = () => {
-    result.widthPixel = Math.ceil(inputWidth.value / 2.54 * dpi);
-    result.heightPixel = Math.ceil(inputHeight.value / 2.54 * dpi);
+    result.widthPixel = Math.ceil(inputWidth.value / 2.54 * dpi/10);
+    result.heightPixel = Math.ceil(inputHeight.value / 2.54 * dpi/10);
     resultCnt.innerHTML = `${result.widthPixel} x ${result.heightPixel} px`
 }
 // мделать слушатель которій при клике ппеерключает html елемент select на "Власний розмір"
-// inputWidth.addEventListener('input', ()=> {
+inputWidth.addEventListener('input', () => {
+    selectSize[0].selected = true;
+    convertFunc();
+});
 
-// });
+inputHeight.addEventListener('input', () => {
+    selectSize[0].selected = true;
+    convertFunc();
+});
 
 selectSize.addEventListener('change', (e) => {
     let w = selectSize.value.split('x');
-    inputWidth.value = Number(w[0]) / 10; //перевод мм в см
-    inputHeight.value = Number(w[1]) / 10; //перевод мм в см
+    inputWidth.value = Number(w[0]);
+    inputHeight.value = Number(w[1]);
     convertFunc();
 });
 
@@ -31,8 +37,6 @@ dpiSelect.addEventListener('change', (e) => {
     let description = dpiSelect[i].title  // описання для dpi
     convertFunc();
 });
-
-
 
 
 convert.addEventListener('click', convertFunc)
