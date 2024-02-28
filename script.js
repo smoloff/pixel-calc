@@ -8,12 +8,22 @@ const dpiSelect = document.getElementById('dpi_values');
 let dpi = 300;
 let result = {};
 
+const compareFunc = () => {
+    for (let elem of selectSize) {
+    let mm = elem.value.split('x')
+    if (inputWidth.value == mm[0] && inputHeight.value == mm[1] || inputWidth.value == mm[1] && inputHeight.value == mm[0]) {
+        elem.selected = true
+     }
+}
+};
+
+
 const convertFunc = () => {
     result.widthPixel = Math.ceil(inputWidth.value / 2.54 * dpi/10);
     result.heightPixel = Math.ceil(inputHeight.value / 2.54 * dpi/10);
-    resultCnt.innerHTML = `${result.widthPixel} x ${result.heightPixel} px`
+    resultCnt.innerHTML = `${result.widthPixel} x ${result.heightPixel} px`;
+    compareFunc();
 }
-// мделать слушатель которій при клике ппеерключает html елемент select на "Власний розмір"
 inputWidth.addEventListener('input', () => {
     selectSize[0].selected = true;
     convertFunc();
@@ -46,6 +56,5 @@ rotate.addEventListener('click', (e) => {
     inputHeight.value = buffer;
     convertFunc();
 });
-
 
 
