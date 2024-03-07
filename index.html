@@ -8,48 +8,54 @@
 </head>
 
 <body>
-    <section style="display: flex; flex-direction: column; flex-gap:20px"></section>
-    <div>
-        <select name="standart_sizes" id="standart_sizes">
-            <option>Власний розмір</option>
-            <option value="105x148">А6</option>
-            <option value="148x210">А5</option>
-            <option value="210x297">А4</option>
-            <option value="297x420">А3</option>
-            <option value="420x594">А2</option>
-            <option value="594x841">А1</option>
-            <option value="841x1189">А0</option>
-            <option value="500x707">B2</option>
-            <option value="707x1000">B1</option>
-        </select>
+    <section style="display: flex; flex-direction: column; flex-gap:20px" id="someId">
+        <div>
+            <select name="standart_sizes" id="standart_sizes">
+                <option disabled value="0x0">Власний розмір</option>
+                <option value="105x148">А6</option>
+                <option selected value="148x210">А5</option>
+                <option value="210x297">А4</option>
+                <option value="297x420">А3</option>
+                <option value="420x594">А2</option>
+                <option value="594x841">А1</option>
+                <option value="841x1189">А0</option>
+                <option value="500x707">B2</option>
+                <option value="707x1000">B1</option>
+            </select>
 
-        <select name="dpi_values" id="dpi_values">
-            <option value="450" title="високоякісний друк до А4 формату">450 dpi</option>
-            <option value="300" title="високоякісний друк до А1 формату">300 dpi</option>
-            <option value="200" title="високоякісний друк від А1 формату">200 dpi</option>
-            <option value="150" title="високоякісний друк від А0 формату">150 dpi</option>
-            <option value="96" title="перегляду на екрані монітору">96 dpi</option>
-            <option value="72" title="перегляд на екрані смартфону">72 dpi</option>
-        </select>
-    </div>
+            <select name="dpi_values" id="dpi_values">
+                <option value="450" title="високоякісний друк до А4 формату">450 dpi</option>
+                <option selected value="300" title="високоякісний друк до А1 формату">300 dpi</option>
+                <option value="200" title="високоякісний друк від А1 формату">200 dpi</option>
+                <option value="150" title="високоякісний друк від А0 формату">150 dpi</option>
+                <option value="96" title="перегляду на екрані монітору">96 dpi</option>
+                <option value="72" title="перегляд на екрані смартфону">72 dpi</option>
+            </select>
 
-    <div style="display: flex;">
-        <div style=" display: flex; flex-direction: column;">
-        <label for="width">Ширина, мм</label>
-        <input type="number" name="width" min="1" max="3200" step="1" id="input_width">
-    </div>
-    <img id="rotate" title="змінити орієнтацію із альбомної на портрету та навпаки" src="/reverse_icon.svg" width="20px">
-    <div style="display: flex; flex-direction: column;">
+            <div>
+                <input type="radio" id="cm" name="cm" value="CM" class="measuring" />
+                <label for="huey">cm</label>
 
-        <label for="width">Довжина, мм</label>
-        <input type="number" name="lenght" min="1" max="3200" step="1" id="input_height">
-    </div>
+                <input type="radio" id="mm" name="cm" value="MM" class="measuring" checked />
+                <label for="huey">mm</label>
+            </div>
+        </div>
 
-    </div>
-    <div>
-        <!-- <button id="btn_convert">Конвертувати</button> -->
-        <span id="result"></span>
-    </div>
+        <div style="display: flex;">
+            <div style=" display: flex; flex-direction: column;">
+                <input type="number" name="width" min="1" max="3200" step="1" id="input_width" placeholder="Ширина">
+            </div>
+            <span id="rotate" title="змінити орієнтацію із альбомної на портрету та навпаки">&#8644</span>
+            <div style="display: flex; flex-direction: column;">
+                <input type="number" name="lenght" min="1" max="3200" step="1" id="input_height" placeholder="Довжина">
+            </div>
+
+        </div>
+        <div>
+            <button id="btn_convert">Конвертувати</button>
+            <span id="result"></span>
+        </div>
+    </section>
 
 
 
