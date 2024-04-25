@@ -3,60 +3,165 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description"
+        content="Дізнайтеся, як можна швидко та легко конвертувати пікселі в сантиметри для друку з роздільною здатністю 300 DPI, перегляду на екрані з роздільною здатністю 150 DPI та створення прев'ю з роздільною здатністю 72 DPI">
+    <title>Основи конвертації пікселів у сантиметри для веб-дизайнерів, менеджерів, студентів</title>
 </head>
 
+
 <body>
-    <section style="display: flex; flex-direction: column; flex-gap:20px" id="someId">
-        <div>
-            <select name="standart_sizes" id="standart_sizes">
-                <option disabled value="0x0">Власний розмір</option>
-                <option value="105x148">А6</option>
-                <option selected value="148x210">А5</option>
-                <option value="210x297">А4</option>
-                <option value="297x420">А3</option>
-                <option value="420x594">А2</option>
-                <option value="594x841">А1</option>
-                <option value="841x1189">А0</option>
-                <option value="500x707">B2</option>
-                <option value="707x1000">B1</option>
-            </select>
+    <article>
+        <h1>Пікселі в сантиметри - як конвертувати?</h1>
+        <p>Тема дещо нестандартне і виходить за область друку. Ідею для посту підказали нам замовники за
+            неодноразовим зверненням із одним і тим самим питанням <q>скільки пікселів в сантиметрі?</q>
+            було вирішено раз і назавжди
+            закрити це питання. Тож ми створили онлайн коневертор. Будь ласка, користуйтесь. </p>
+        <section class="flex col gap-20" id="someId">
+            <div class="flex row gap-20">
+                <select name="standart_sizes" id="standart_sizes">
+                    <option disabled value="0x0">Власний розмір</option>
+                    <option value="105x148">А6</option>
+                    <option selected value="148x210">А5</option>
+                    <option value="210x297">А4</option>
+                    <option value="297x420">А3</option>
+                    <option value="420x594">А2</option>
+                    <option value="594x841">А1</option>
+                    <option value="841x1189">А0</option>
+                    <option value="500x707">B2</option>
+                    <option value="707x1000">B1</option>
+                </select>
 
-            <select name="dpi_values" id="dpi_values">
-                <option value="450" title="високоякісний друк до А4 формату">450 dpi</option>
-                <option selected value="300" title="високоякісний друк до А1 формату">300 dpi</option>
-                <option value="200" title="високоякісний друк від А1 формату">200 dpi</option>
-                <option value="150" title="високоякісний друк від А0 формату">150 dpi</option>
-                <option value="96" title="перегляду на екрані монітору">96 dpi</option>
-                <option value="72" title="перегляд на екрані смартфону">72 dpi</option>
-            </select>
+                <select name="dpi_values" id="dpi_values">
+                    <option value="450" title="високоякісний друк до А4 формату">450 dpi</option>
+                    <option selected value="300" title="високоякісний друк до А1 формату">300 dpi</option>
+                    <option value="200" title="якісний друк від А1 формату і більше">200 dpi</option>
+                    <option value="150" title="якісний друк від А0 формату і більше">150 dpi</option>
+                    <option value="96" title="перегляду на екрані монітору">96 dpi</option>
+                    <option value="72" title="перегляд на екрані смартфону">72 dpi</option>
+                </select>
 
+                <div>
+
+                    <input type="radio" id="cm" name="cm" value="CM" class="measuring" />
+                    <label for="cm">cm</label>
+
+                    <input type="radio" id="mm" name="cm" value="MM" class="measuring" checked="checked" />
+                    <label for="mm">mm</label>
+
+
+
+
+                </div>
+            </div>
+
+            <div class="flex row gap-20">
+                <div style=" display: flex; flex-direction: column;">
+                    <input type="number" name="width" min="1" max="3200" step="1" id="input_width" value="148"
+                        placeholder="Ширина: 148 ММ">
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <input type="number" name="lenght" min="1" max="3200" step="1" id="input_height" value="210"
+                        placeholder="Довжина: 210 мм">
+                </div>
+
+            </div>
             <div>
-                <input type="radio" id="cm" name="cm" value="CM" class="measuring" />
-                <label for="huey">cm</label>
-
-                <input type="radio" id="mm" name="cm" value="MM" class="measuring" checked />
-                <label for="huey">mm</label>
+                <!-- <button id="btn_convert">Конвертувати</button> -->
+                <span id="result"></span>
             </div>
-        </div>
+        </section>
+        <section>
+            <h2>Основи переведення пікселів у сантиметри</h2>
+            <p>
+                У цій статті ми розглянемо, як дизайнери можуть ефективно конвертувати пікселі в сантиметри для
+                різних цілей, включаючи друк з роздільною здатністю 300 dpi, перегляд на екрані з роздільною здатністю
+                150
+                dpi і створення прев'ю або скріншотів з роздільною здатністю 72 dpi. Бажано цю статтю не розглядати як
+                100%
+                мануал, а як рекомендації яка доможуть
+                зрозуміти базові принципи що прибере "головну біль" питання <q>скільки пікселів мені необхідно?</q> щоб
+                замовити друку на холсті, наклейки, або чому скіншот буде надрукований неякісно.
+            </p>
 
-        <div style="display: flex;">
-            <div style=" display: flex; flex-direction: column;">
-                <input type="number" name="width" min="1" max="3200" step="1" id="input_width" placeholder="Ширина">
-            </div>
-            <span id="rotate" title="змінити орієнтацію із альбомної на портрету та навпаки">&#8644</span>
-            <div style="display: flex; flex-direction: column;">
-                <input type="number" name="lenght" min="1" max="3200" step="1" id="input_height" placeholder="Довжина">
-            </div>
+            <p>
+                У сфері веб-дизайну розуміння взаємозв'язку між пікселями та сантиметрами має вирішальне значення. У той
+                час
+                як пікселі (скорочення від "picture elements" - елементи зображення) є будівельними блоками цифрових
+                зображень на екранах,
+                сантиметри є стандартною одиницею виміру, особливо коли мова йде про друк. Як веб-дизайнеру, вам часто
+                доводиться конвертувати між цими одиницями, щоб дизайни виглядали чудово як на екрані, так і в
+                друкованому вигляді.
+            </p>
+            <p>Переведення пікселів у сантиметри залежить від двох ключових факторів:</p>
+            <ol>
+                <li><strong>Роздільна здатність::</strong> Кількість пікселів на дюйм (PPI) або точок на дюйм (DPI) у
+                    зображенні визначає його роздільну здатність. Зображення з вищою роздільною здатністю мають більше
+                    пікселів на кожен дюйм, що дає змогу отримати чіткіші та детальніші зображення.</li>
+                <li><strong>Фактичний розмір:</strong> Фізичні розміри зображення, що вимірюються в сантиметрах,
+                    визначають
+                    його розмір при друкуванні або відображенні на екрані.</li>
+            </ol>
+            <h2>Переведення пікселів у сантиметри для друку, превью та інших цілей</h2>
+            <p>Формула перерхунку досить проста і розшифровується від абревіатури DPI - dots per inch тобто "точки на дюйм". 
+            Наприклад для друку золотим стандартом є роздільна здатність 300 dpi і уявімо, що хочете роздрукувати листівки 10х15 см:
+            10 см / 2,54 * 300 DPI = 1181 піксельів в ширину
+            15 см / 2.54 * 300 DPI = 1171 піксельів в довжину
+            Нижче описані стандарти DPI для різних рішень. Якщо Ви знаєте розмір, але не хочете витрачати час на підрахунок то скористайтесь готовим калькулятором на початку статті.
 
-        </div>
-        <div>
-            <button id="btn_convert">Конвертувати</button>
-            <span id="result"></span>
-        </div>
-    </section>
+            <ol>
+                <li>72 DPI: Ідеально підходить для веб-графіки та екранного перегляду, забезпечуючи баланс між якістю
+                    зображення та розміром файлу, підходить для швидкого завантаження веб-сторінок та цифрових дисплеїв.
+                </li>
+                <li>96 DPI: Зазвичай використовується для настільних моніторів і зображень стандартної роздільної
+                    здатності,
+                    забезпечуючи достатню чіткість і деталізацію для перегляду на екрані без надмірного збільшення
+                    розміру
+                    файлу.</li>
+                <li>150 DPI: Оптимально підходить для високоякісного перегляду на екрані та помірної якості друку,
+                    забезпечуючи баланс між чіткістю цифрового дисплея та роздільною здатністю друк. Цього достатньо для
+                    друку на холсті від 50х70 см (завдяки текстурі полотна), та плакатами А0 формату</li>
+                <li>200 DPI:Несуттєва різниця із 150 dpi. Роздільної здатності вистачить для якісного друку полотна
+                    30х40 см
+                    та плакату А1 формату</li>
+                <li>300 DPI: Стандарт для високоякісного друку, що забезпечує чіткі та деталізовані результати, придатні
+                    для
+                    професійного друку, наклейок, постерів, листівок та інших друкованих матеріалів.</li>
+                <li>450 DPI: Зарезервовано для надвисокої якості друку, що забезпечує виняткову деталізацію та чіткість,
+                    підходить для художніх відбитків, фотографій і професійних публікацій, які вимагають максимальної
+                    точності та якості. Використовуємо за необхідності коли товщина лінії букви в 300 dpi становить лише
+                    1
+                    піксель. Находить своє застосування в листівках, наклейках, стікерпаках та візитках </li>
+            </ol>
 
+        </section>
+    </article>
+    
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+          margin: 0;
+          padding: 20px;
+        }
+        article {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        h1, h2 {
+          color: #333;
+        }
+        p {
+          color: #666;
+        }
+        code {
+          font-family: Consolas, monospace;
+          background-color: #f4f4f4;
+          padding: 2px 4px;
+          border-radius: 4px;
+        }
+      </style>
 
 
 
