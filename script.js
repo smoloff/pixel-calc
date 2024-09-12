@@ -7,6 +7,7 @@ const rotation = document.getElementById('rotate');
 const dpiSelect = document.getElementById('dpi_values');
 const measuring = document.querySelectorAll('.measuring');
 
+
 let result = {};
 
 
@@ -31,13 +32,15 @@ const form = document.getElementById('someId');
 const convertFunc = () => {
     FormObj.widthPx = Math.ceil(FormObj.width / 2.54 * FormObj.resolution / FormObj.units);
     FormObj.heightPx = Math.ceil(FormObj.height / 2.54 * FormObj.resolution / FormObj.units);
-    resultCnt.innerHTML = `${FormObj.widthPx} x ${FormObj.heightPx} px`
+    resultCnt.innerHTML = `${FormObj.widthPx} x ${FormObj.heightPx}`
 };
 
 convertFunc(); //первibq первинний прорахунок
 
-form.addEventListener('change', (e) => {
 
+
+form.addEventListener('change', (e) => {
+    
     console.log(e.target?.id, e.target?.value)
     switch (e.target.id) {
 
@@ -52,16 +55,9 @@ form.addEventListener('change', (e) => {
             FormObj.resolution = Number(e.target.value);
             break;
 
-        case 'mm':
-            FormObj.units == units.MM ? FormObj.units = FormObj.units : FormObj.units = units.MM;
+        case "measuring":
+            e.target.value == "1" ? FormObj.units = units.MM : FormObj.units = units.CM;          
 
-            selectSize[0].selected = true;
-            e.target.checked = true;
-            console.log(FormObj)
-            break;
-
-        case 'cm':
-            FormObj.units == units.CM ? FormObj.units = FormObj.units : FormObj.units = units.CM;
             selectSize[0].selected = true;
             e.target.checked = true;
             console.log(FormObj)

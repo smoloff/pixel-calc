@@ -8,7 +8,7 @@
     <meta name="description"
         content="
         Як конвертувати пікселі в сантиметри: практичні поради для веб-дизайнерів, маркетологів, малих підприємців, художників та педагогів">
-    <title>Основи конвертації пікселів у сантиметри для веб-дизайнерів, маркелогів, художників та студентів</title>
+    <title>Як конвертувати пікселі в сантиметри. Поради для веб-дизайнерів, маркелогів, художників та студентів</title>
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",
@@ -40,7 +40,7 @@
 
 <body>
     <article>
-        <h1>Пікселі в сантиметри - як конвертувати?</h1>
+        <h1>Пікселі в сантиметри - як конвертувати?</h1><a name="calc" />
         <p>Тема нестандартна, хоча вона вона є дотичною до сфери друку та все ж виходить за неї. Тему для посту нам
             підказали
             замовники за
@@ -48,56 +48,80 @@
             Було вирішено раз і назавжди
             закрити це питання. Тож ми створили онлайн коневертор (будь ласка, користуйтесь), а нижче детальний опис.
         </p>
-        <section class="flex col gap-20" id="someId">
+        <section class="flex row gap-20 calc" id="someId">
             <div class="flex row gap-20">
-                <select name="standart_sizes" id="standart_sizes">
-                    <option disabled value="0x0">Власний розмір</option>
-                    <option value="105x148">А6</option>
-                    <option selected value="148x210">А5</option>
-                    <option value="210x297">А4</option>
-                    <option value="297x420">А3</option>
-                    <option value="420x594">А2</option>
-                    <option value="594x841">А1</option>
-                    <option value="841x1189">А0</option>
-                    <option value="500x707">B2</option>
-                    <option value="707x1000">B1</option>
-                </select>
 
-                <select name="dpi_values" id="dpi_values">
-                    <option value="450" title="високоякісний друк до А4 формату">450 dpi</option>
-                    <option selected value="300" title="високоякісний друк до А1 формату">300 dpi</option>
-                    <option value="200" title="якісний друк від А1 формату і більше">200 dpi</option>
-                    <option value="150" title="якісний друк від А0 формату і більше">150 dpi</option>
-                    <option value="96" title="перегляду на екрані монітору">96 dpi</option>
-                    <option value="72" title="перегляд на екрані смартфону">72 dpi</option>
-                </select>
+                <div class="flex col gap-20">
 
-                <div>
+                    <div class="flex col">
+                        <label for="standart_sizes" class="gray smaller">Оберіть формат</label>
+                        <select name="standart_sizes" id="standart_sizes" class="select">
+                            <option disabled value="0x0">Власний розмір</option>
+                            <option value="105x148">А6</option>
+                            <option selected value="148x210">А5</option>
+                            <option value="210x297">А4</option>
+                            <option value="297x420">А3</option>
+                            <option value="420x594">А2</option>
+                            <option value="594x841">А1</option>
+                            <option value="841x1189">А0</option>
+                            <option value="500x707">B2</option>
+                            <option value="707x1000">B1</option>
+                        </select>
+                    </div>
 
-                    <input type="radio" id="cm" name="cm" value="CM" class="measuring" />
-                    <label for="cm">cm</label>
+                    <div class="flex row gap-20">
+                        <div style=" display: flex; flex-direction: column;">
+                            <label for="input_width" class="gray smaller">Ширина</label>
+                            <input type="number" name="width" min="1" max="3200" step="1" id="input_width" value="148"
+                                class="input-number">
+                        </div>
 
-                    <input type="radio" id="mm" name="cm" value="MM" class="measuring" checked="checked" />
-                    <label for="mm">mm</label>
+                        <div style="display: flex; flex-direction: column;">
+                            <label for="input_height" class="gray smaller">Висота</label>
+                            <input type="number" name="lenght" min="1" max="3200" step="1" id="input_height" value="210"
+                                class="input-number">
+                        </div>
+                    </div>
+
+                    <div class="flex col">
+                        <label for="dpi_values" class="gray smaller">Роздільна здатність</label>
+                        <select name="dpi_values" id="dpi_values" class="select">
+                            <option value="450" title="високоякісний друк до А4 формату">450 dpi</option>
+                            <option selected value="300" title="високоякісний друк до А1 формату">300 dpi</option>
+                            <option value="200" title="якісний друк від А1 формату і більше">200 dpi</option>
+                            <option value="150" title="якісний друк від А0 формату і більше">150 dpi</option>
+                            <option value="96" title="перегляду на екрані монітору">96 dpi</option>
+                            <option value="72" title="перегляд на екрані смартфону">72 dpi</option>
+                        </select>
+                    </div>
+
+                    <div class="flex col">
+                        <label for="measuring" class="gray smaller">Одиниці вимірювання</label>
+                        <div class="flex row center">
+                            <span class="padd-7">мм</span>
+                            <input type="range" id="measuring" name="volume" min="1" max="2" class="slider-range"
+                                value="1" />
+                            <span class="padd-7">см</span>
+                        </div>
+
+                    </div>
+
+                    <div class="flex col">
+                        <label for="result" class="gray smaller">Результат:</label>
+                        <output><span id="result" class="result"></span> px</output>
+                    </div>
 
                 </div>
             </div>
 
-            <div class="flex row gap-20">
-                <div style=" display: flex; flex-direction: column;">
-                    <input type="number" name="width" min="1" max="3200" step="1" id="input_width" value="148"
-                        placeholder="Ширина: 148 ММ">
+            <div class="wrapper">
+                <div class="image">
+                    <img src="fox-mona-1.webp" alt="превью макету із розмірами в пікселях">
                 </div>
-                <div style="display: flex; flex-direction: column;">
-                    <input type="number" name="lenght" min="1" max="3200" step="1" id="input_height" value="210"
-                        placeholder="Довжина: 210 мм">
-                </div>
+            </div>
 
-            </div>
-            <div>
-                <span id="result"></span>
-            </div>
         </section>
+
         <section>
             <h2>Основи переведення пікселів у сантиметри</h2>
             <p>
@@ -113,7 +137,11 @@
                 зрозуміти базові принципи що прибере "головну біль" питання <q>скільки пікселів мені необхідно?</q> щоб
                 замовити друку на холсті, наклейки, або чому скіншот буде надрукований неякісно.
             </p>
-            <img src="dpi_and_print_size-01.jpg" alt="" width="800px">
+            <img decoding="async" loading="lazy"
+                title="Ілюстрація на якій видно зміни в розмірі зображення в залежності від зміни щільності пікселів"
+                src="/pixel-calc/increase-dpi-in-image.webp"
+                alt="Зміна розміру зображення відвищуючи значення DPI, але без зміни кількості пікселів" width="800px">
+
 
             <p>
                 У сфері веб-дизайну розуміння взаємозв'язку між пікселями та сантиметрами має вирішальне значення. У той
@@ -137,8 +165,10 @@
                     визначають
                     його розмір при друкуванні або відображенні на екрані.</li>
             </ol>
+            <img decoding="async" loading="lazy" src="dpi_and_print_size.webp" alt="" width="800px">
             <h2>Переведення пікселів у сантиметри для друку, превью та інших цілей</h2>
-            <p>Формула перерхунку досить проста і розшифровується від абревіатури DPI:<br>
+            <p>Формула перерхунку досить проста (ми її використовували під час розробки <a
+                    href="#calc">калькулятора</a>) і розшифровується від абревіатури DPI:<br>
                 <code>px = cm / 2.54 * dpi</code><br>
                 Наприклад для друку золотим стандартом є роздільна здатність 300 dpi і уявімо, що хочете роздрукувати
                 листівки 10х15 см:
