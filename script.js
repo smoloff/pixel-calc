@@ -6,6 +6,9 @@ const selectSize = document.getElementById('standart_sizes');
 const rotation = document.getElementById('rotate');
 const dpiSelect = document.getElementById('dpi_values');
 const measuring = document.querySelectorAll('.measuring');
+const widthIndicator = document.getElementById('width-indicator');
+const heightIndicator = document.getElementById('height-indicator');
+const imageContainer = document.getElementById('image-container')
 
 
 let result = {};
@@ -27,12 +30,26 @@ const FormObj = {
 
 const form = document.getElementById('someId');
 
-
+const imageSizeChange = (w, h) => {
+    let width = 300;
+    let height = 300;
+    let ratio = w/h;
+    if(w > h) {        
+        height = 300 / ratio;
+    } else if (w < h) {
+        width = 300 * ratio;
+    } 
+    imageContainer.style.width = `${width}px`;
+    imageContainer.style.height = `${height}px`;
+    }
 
 const convertFunc = () => {
     FormObj.widthPx = Math.ceil(FormObj.width / 2.54 * FormObj.resolution / FormObj.units);
     FormObj.heightPx = Math.ceil(FormObj.height / 2.54 * FormObj.resolution / FormObj.units);
-    resultCnt.innerHTML = `${FormObj.widthPx} x ${FormObj.heightPx}`
+    resultCnt.innerHTML = `${FormObj.widthPx} x ${FormObj.heightPx}`;
+    widthIndicator.innerHTML = `${FormObj.widthPx} px`;
+    heightIndicator.innerHTML = `${FormObj.heightPx} px`;
+    imageSizeChange(FormObj.width, FormObj.height)
 };
 
 convertFunc(); //первibq первинний прорахунок

@@ -72,20 +72,23 @@
 
 .wrapper {
     
-    padding-right: 30px;
-    padding-top: 30px;
-    border: 1px solid black;
+    width: 300px;
+    height: 350px;
+    /* border: 1px solid black; */
+    position: relative;
 }
 
 
 .image-container {
-    width: 200px;
-    max-width: 300px;
-    height: 300px;
-    max-height: 300px;
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px); 
     overflow: hidden;
-    position: relative;
     border: 1px solid red;
+    transition: all .3s ease-in;
 }
 
 .image-container img {
@@ -96,4 +99,33 @@
     /* Зображення заповнює контейнер без білих полів */
     object-position: 50% 10%;
     /* Центрування зображення в контейнері */
+}
+.size-indicators {
+    /* border: 1px solid orange; */
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.top-indicator {
+    display: block;
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    right: calc(50% - 15px)
+ 
+}
+
+.right-indicator {
+    display: block;
+    position: absolute; 
+    width: 60px;
+    height: 30px;
+    right: -15px;
+    line-height: 30px;
+    text-align: center;
+    rotate: 90deg;
+    top: calc(50% - 15px);
 }
